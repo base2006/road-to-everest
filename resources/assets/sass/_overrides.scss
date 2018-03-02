@@ -1,0 +1,43 @@
+// Navb
+
+// Cards
+.card {
+    border-radius: 0;
+    border: none;
+    background-color: #ecf0f1;
+    box-shadow: 0 0 5px rgba(0,0,0,0.2);
+    color: #343a40;
+    .card-img-top {
+        border-radius: 0;
+    }
+}
+
+// Buttons
+button:focus {
+    outline: none;
+}
+
+.btn {
+    border-radius: 0;
+}
+.btn-link {
+    color: #adadad;
+    &:hover {
+        color: #757575;
+    }
+}
+
+// Dropdowns
+.dropdown-menu-right {
+    right: 0;
+    left: auto;
+}
+
+// Input fields
+.form-control {
+    border-radius: 0;
+}
+.form-control:focus {
+    box-shadow: none;
+    border-color: #343a40;
+}

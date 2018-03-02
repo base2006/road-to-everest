@@ -1,14 +1,67 @@
-
 // Fonts
-@import url("https://fonts.googleapis.com/css?family=Raleway:300,400,600");
-
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,600,700');
 // Variables
 @import "variables";
-
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
+// Helpers
+@import "helpers";
+// Overrides
+@import "overrides";
 
-.navbar-laravel {
-  background-color: #fff;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+// Hamburger menu
+@import 'hamburgers/hamburgers.scss';
+// Iconic - icon font
+@import 'iconic/css/open-iconic-bootstrap.scss';
+
+body {
+    color: $text-color;
+}
+.navbar {
+    background-color: transparent;
+}
+
+#menu .dropdown-menu {
+    border: none;
+    border-radius: 0;
+    background: transparent;
+    .dropdown-item {
+        color: white;
+        &:hover {
+            background: transparent;
+        }
+    }
+}
+
+.header-image {
+    background-image: url("/img/road-to-everest.jpg");
+    background-position: top center;
+    background-size: cover;
+    height: 40vh;
+    @include media-breakpoint-up(sm) {
+        height: 100vh;
+    }
+}
+.header-title {
+    text-transform: uppercase;
+    color: #fff;
+    font-weight: bold;
+    padding: 10rem;
+}
+
+.latest-post {
+    margin-top: -100px;
+    @include media-breakpoint-up(sm) {
+        margin-top: -150px;
+    }
+}
+
+.login, .reset-password {
+    margin-top: -26px;
+    margin-bottom: -26px;
+}
+
+footer {
+    background: #2a2a2a;
+    font-size: 0.8rem;
 }
