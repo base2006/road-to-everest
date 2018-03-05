@@ -6,13 +6,12 @@
 @import '~bootstrap/scss/bootstrap';
 // Helpers
 @import "helpers";
-// Overrides
-@import "overrides";
-
 // Hamburger menu
 @import 'hamburgers/hamburgers.scss';
 // Iconic - icon font
 @import 'iconic/css/open-iconic-bootstrap.scss';
+// Overrides
+@import "overrides";
 
 body {
     color: $text-color;

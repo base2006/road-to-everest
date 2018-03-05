@@ -10010,50 +10010,6 @@ a.text-dark:focus {
   width: 50vw;
 }
 
-.card {
-  border-radius: 0;
-  border: none;
-  background-color: #ecf0f1;
-  -webkit-box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
-          box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
-  color: #343a40;
-}
-
-.card .card-img-top {
-  border-radius: 0;
-}
-
-button:focus {
-  outline: none;
-}
-
-.btn {
-  border-radius: 0;
-}
-
-.btn-link {
-  color: #adadad;
-}
-
-.btn-link:hover {
-  color: #757575;
-}
-
-.dropdown-menu-right {
-  right: 0;
-  left: auto;
-}
-
-.form-control {
-  border-radius: 0;
-}
-
-.form-control:focus {
-  -webkit-box-shadow: none;
-          box-shadow: none;
-  border-color: #343a40;
-}
-
 /*!
  * Hamburgers
  * @description Tasty CSS-animated hamburgers
@@ -12391,6 +12347,54 @@ button:focus {
 
 .oi-zoom-out:before {
   content: '\E0DE';
+}
+
+.oi {
+  font-size: 14px;
+}
+
+.card {
+  border-radius: 0;
+  border: none;
+  background-color: #ecf0f1;
+  -webkit-box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+          box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+  color: #343a40;
+}
+
+.card .card-img-top {
+  border-radius: 0;
+}
+
+button:focus {
+  outline: none;
+}
+
+.btn {
+  border-radius: 0;
+}
+
+.btn-link {
+  color: #adadad;
+}
+
+.btn-link:hover {
+  color: #757575;
+}
+
+.dropdown-menu-right {
+  right: 0;
+  left: auto;
+}
+
+.form-control {
+  border-radius: 0;
+}
+
+.form-control:focus {
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  border-color: #343a40;
 }
 
 body {

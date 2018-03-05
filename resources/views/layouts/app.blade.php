@@ -33,8 +33,8 @@
 
                     </button>
                     <div class="dropdown-menu dropdown-menu-right text-right text-white">
-                        <a href="" class="dropdown-item">New Post</a>
-                        <a href="" class="dropdown-item">Manage Posts</a>
+                        <a href="{{ route('posts.create') }}" class="dropdown-item">New Post</a>
+                        <a href="{{ route('posts.index') }}" class="dropdown-item">Manage Posts</a>
                         <a href="{{ route('logout') }}" class="dropdown-item" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Log out</a>
                         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                             @csrf
