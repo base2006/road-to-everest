@@ -3,17 +3,21 @@
         display: flex;
         align-items: center;
     }
+
     .wrapper {
         margin-left: 8px;
     }
+
     .slug {
         background-color: #fdfd96;
         padding: 3px 5px;
     }
+
     .slug-edit {
         display: inline-block;
         width: auto;
     }
+
     .url-wrapper {
         height: 30px;
         display: flex;
@@ -30,8 +34,8 @@
         <div class="url-wrapper wrapper">
             <span class="root-url">{{ url }}</span
             ><span class="subdirectory-url">/{{ subdirectory }}/</span
-            ><span class="slug" v-show="slug && !isEditing">{{ slug }}</span
-            ><input type="text" class="form-control form-control-sm slug-edit" v-show="isEditing" v-model="customSlug">
+        ><span class="slug" v-show="slug && !isEditing">{{ slug }}</span
+        ><input type="text" class="form-control form-control-sm slug-edit" v-show="isEditing" v-model="customSlug">
         </div>
 
         <div class="button-wrapper wrapper">
@@ -58,40 +62,60 @@
                 required: true
             }
         },
-        data: function() {
+        data: function () {
             return {
-                slug: this.convertTitle(),
+                slug: this.setSlug(this.title),
                 isEditing: false,
                 customSlug: '',
-                wasEdited: false
+                wasEdited: false,
+                api_token: this.$root.api_token
             }
         },
         methods: {
-            convertTitle: function() {
-                return Slug(this.title)
-            },
-            editSlug: function() {
+            editSlug: function () {
                 this.customSlug = this.slug;
+                this.$emit('edit', this.slug);
                 this.isEditing = true;
             },
-            saveSlug: function() {
+            saveSlug: function () {
                 if (this.customSlug !== this.slug) this.wasEdited = true;
-                this.slug = Slug(this.customSlug);
+                this.setSlug(this.customSlug);
+                this.$emit('save', this.slug);
                 this.isEditing = false;
             },
-            resetSlug: function() {
-                this.slug = this.convertTitle();
+            resetSlug: function () {
+                this.setSlug(this.title);
+                this.$emit('reset', this.slug);
                 this.wasEdited = false;
                 this.isEditing = false;
+            },
+            setSlug: function (newVal, count = 0) {
+                let slug = Slug(newVal + (count > 0 ? `-${count}` : ''));
+                let vm = this;
+
+                if (vm.api_token && slug) {
+                    axios.get('/api/posts/unique', {
+                        params: {
+                            api_token: vm.api_token,
+                            slug: slug
+                        }
+                    }).then(function (response) {
+                        if (response.data) {
+                            vm.slug = slug;
+                            vm.$emit('slug-changed', slug);
+                        } else {
+                            vm.setSlug(newVal, count + 1);
+                        }
+                    }).catch(function (error) {
+                        console.log(error)
+                    });
+                }
             }
         },
         watch: {
-            title: _.debounce(function() {
-                if (this.wasEdited === false) this.slug = this.convertTitle();
-            }, 500),
-            slug: function(val) {
-                this.$emit('slug-changed', val);
-            }
+            title: _.debounce(function () {
+                if (this.wasEdited == false) this.setSlug(this.title);
+            }, 500)
         }
     }
 </script>

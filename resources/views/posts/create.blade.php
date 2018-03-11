@@ -39,7 +39,8 @@
             data: function () {
                 return {
                     title: '',
-                    slug: ''
+                    slug: '',
+                    api_token: '{{ Auth::user()->api_token }}'
                 }
             },
             methods: {
